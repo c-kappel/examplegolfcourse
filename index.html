@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Golf Course Demo</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar_container">
+            <a id="navbar_logo" href="/">
+                <img src="/imgs/logo.webp" alt="Landscape Links Logo">
+            </a>
+            <ul class="navbar_menu">
+                <li class="navbar_item dropdown">
+                    <a href="#" class="navbar_link">The Course ▾</a>
+                    <ul class="dropdown_menu">
+                        <li><a href="course-info.html">Course Info</a></li>
+                        <li><a href="golf-rates.html">Golf Rates</a></li>
+                        <li><a href="golf-instruction.html">Golf Instruction</a></li>
+                        <li><a href="golf-policy.html">Golf Policy</a></li>
+                    </ul>
+                </li>
+                <li class="navbar_item">
+                    <a href="dining.html" class="navbar_link">Dining</a>
+                </li>
+                <li class="navbar_item dropdown">
+                    <a href="#" class="navbar_link">About Us ▾</a>
+                    <ul class="dropdown_menu">
+                        <li><a href="directions.html">Directions</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="slideshow-container">
+        <div class="slide active">
+            <img src="/imgs/slide.jpg" alt="Golf Course 1">
+        </div>
+        <div class="slide">
+            <img src="/imgs/slide1.jpg" alt="Golf Course 2">
+        </div>
+        <div class="slide">
+            <img src="/imgs/slide2.jpg" alt="Golf Course 3">
+        </div>
+        <div class="slide">
+            <img src="/imgs/slide4.jpg" alt="Golf Course 4">
+        </div>
+
+        <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
+        <button class="next" onclick="changeSlide(1)">&#10095;</button>
+
+        <div class="dots-container">
+            <span class="dot active" onclick="goToSlide(0)"></span>
+            <span class="dot" onclick="goToSlide(1)"></span>
+            <span class="dot" onclick="goToSlide(2)"></span>
+            <span class="dot" onclick="goToSlide(3)"></span>
+        </div>
+    </div>
+
+    <!-- Our Course Section -->
+    <section class="info-section">
+        <div class="info-container">
+            <div class="info-image">
+                <img src="/imgs/slide6.jpg" alt="Our Course">
+            </div>
+            <div class="info-text">
+                <h2>Our Course</h2>
+                <p>Experience the pristine beauty of our championship 18-hole course, meticulously designed to challenge golfers of all skill levels. Surrounded by rolling hills and mature landscapes, Landscape Links offers an unforgettable golfing experience where tradition meets excellence.</p>
+                <a href="course-info.html" class="btn">Explore the Course</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dining Section -->
+    <section class="info-section gray-bg">
+        <div class="info-container reverse">
+            <div class="info-text">
+                <h2>Dining</h2>
+                <p>Indulge in exceptional cuisine at our clubhouse restaurant, where locally-sourced ingredients meet culinary excellence. Whether you're enjoying a post-round meal or celebrating a special occasion, our dining experience complements your day on the course perfectly.</p>
+                <a href="dining.html" class="btn">View Menu</a>
+            </div>
+            <div class="info-image">
+                <img src="/imgs/driving.jpg" alt="Dining">
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <h2>Landscape Links</h2>
+            </div>
+            <div class="footer-contact">
+                <div class="contact-item">
+                    <h4>Phone</h4>
+                    <p>(123) 456-7890</p>
+                </div>
+                <div class="contact-item">
+                    <h4>Email</h4>
+                    <p>landscapelinks@gmail.com</p>
+                </div>
+                <div class="contact-item">
+                    <h4>Address</h4>
+                    <p>1000 Fairway Drive<br>Anywhere, NA 123456</p>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Landscape Links Golf Course. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('.dot');
+
+        function showSlide(n) {
+            if (n >= slides.length) currentSlide = 0;
+            if (n < 0) currentSlide = slides.length - 1;
+            
+            slides.forEach(slide => slide.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
+            
+            slides[currentSlide].classList.add('active');
+            dots[currentSlide].classList.add('active');
+        }
+
+        function changeSlide(direction) {
+            currentSlide += direction;
+            showSlide(currentSlide);
+        }
+
+        function goToSlide(n) {
+            currentSlide = n;
+            showSlide(currentSlide);
+        }
+
+        setInterval(() => {
+            changeSlide(1);
+        }, 5000);
+    </script>
+</body>
+</html>
